@@ -11,7 +11,7 @@ const SinglePost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        const res = await axios.get(`https://wanderworld-production-4b52.up.railway.app/api/blogs/${id}`);
         setPost(res.data);
       } catch (err) {
         setError('Failed to load post.');
@@ -44,7 +44,7 @@ const SinglePost = () => {
         <div className="card p-4 shadow-sm border-0 mx-auto mt-3" style={{ maxWidth: '800px' }}>
           {post.image && (
             <img
-              src={`http://localhost:5000/uploads/${post.image}`}
+              src={`https://wanderworld-production-4b52.up.railway.app/uploads/${post.image}`}
               alt="blog"
               className="card-img-top mb-4"
               style={{ maxHeight: '400px', objectFit: 'cover', borderRadius: '5px' }}

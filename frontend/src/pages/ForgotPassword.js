@@ -14,7 +14,7 @@ function ForgotPassword() {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const res = await axios.post('https://wanderworld-production-4b52.up.railway.app/api/auth/forgot-password', { email });
       setMessage(res.data.message);
       setTimeout(() => navigate('/'), 3000); // Redirect after 3 seconds
     } catch (err) {

@@ -19,7 +19,7 @@ const CreatePost = () => {
     if (image) data.append('image', image);
 
     try {
-      await axios.post('http://localhost:5000/api/blogs', data, {
+      await axios.post('https://wanderworld-production-4b52.up.railway.app/api/blogs', data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

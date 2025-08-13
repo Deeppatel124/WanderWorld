@@ -13,7 +13,7 @@ const BlogCard = ({ blog }) => {
       <Link to={`/blog/${blog._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         {blog.image && (
           <img
-            src={`http://localhost:5000/uploads/${blog.image}`}
+            src={`https://wanderworld-production-4b52.up.railway.app/uploads/${blog.image}`}
             className="card-img-top"
             alt="blog"
             style={{ height: '200px', objectFit: 'cover' }}

@@ -14,7 +14,7 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        const res = await axios.get(`https://wanderworld-production-4b52.up.railway.app/api/blogs/${id}`);
         setFormData({
           title: res.data.title,
           description: res.data.description,
@@ -36,7 +36,7 @@ const EditPost = () => {
     if (image) data.append('image', image);
 
     try {
-      await axios.put(`http://localhost:5000/api/blogs/${id}`, data, {
+      await axios.put(`https://wanderworld-production-4b52.up.railway.app/api/blogs/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

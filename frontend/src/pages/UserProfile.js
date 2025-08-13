@@ -17,12 +17,12 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserBlogs = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/blogs/user/${id}`);
+        const res = await axios.get(`https://wanderworld-production-4b52.up.railway.app/api/blogs/user/${id}`);
         setBlogs(res.data);
         if (res.data.length > 0) {
           setUser(res.data[0].user);
         } else {
-          const userRes = await axios.get(`http://localhost:5000/api/users/${id}`);
+          const userRes = await axios.get(`https://wanderworld-production-4b52.up.railway.app/api/users/${id}`);
           setUser(userRes.data);
         }
       } catch (err) {
@@ -53,7 +53,7 @@ const UserProfile = () => {
                 <div className="card shadow-sm h-100">
                   {blog.image && (
                     <img
-                      src={`http://localhost:5000/uploads/${blog.image}`}
+                      src={`https://wanderworld-production-4b52.up.railway.app/uploads/${blog.image}`}
                       className="card-img-top"
                       alt="Blog"
                       style={{ height: '200px', objectFit: 'cover', cursor: 'pointer' }}
