@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Auth from './pages/Auth';
-import CreatePost from './pages/CreatePost';
-import EditPost from './pages/EditPost';
-import Profile from './pages/Profile';
-import SinglePost from './pages/SinglePost';
-import BlogDetails from './pages/BlogDetails';
-import UserProfile from './pages/UserProfile';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Auth from "./pages/Auth";
+import CreatePost from "./pages/CreatePost";
+import EditPost from "./pages/EditPost";
+import Profile from "./pages/Profile";
+import SinglePost from "./pages/SinglePost";
+import BlogDetails from "./pages/BlogDetails";
+import UserProfile from "./pages/UserProfile";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import "./App.css";
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   return (
     <>
       {/* Hide navbar only on auth page */}
-      {location.pathname !== '/auth' && (
-        <Navbar onSearch={setSearchQuery} />
-      )}
+      {location.pathname !== "/auth" && <Navbar onSearch={setSearchQuery} />}
 
       <Routes>
         <Route path="/" element={<Home searchQuery={searchQuery} />} />
@@ -39,6 +39,8 @@ const App = () => {
         <Route path="/post/:id" element={<SinglePost />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
     </>
   );

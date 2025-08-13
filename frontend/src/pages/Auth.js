@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -33,11 +33,6 @@ const Auth = () => {
           email: form.email,
           password: form.password,
         });
-
-        const existingUser = JSON.parse(localStorage.getItem('user'));
-        if (existingUser && existingUser.email === form.email) {
-          return setError('You are already logged in with this email. Please logout first.');
-        }
 
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -107,6 +102,11 @@ const Auth = () => {
               placeholder="Enter password"
               required
             />
+            {isLogin && (
+              <div className="text-end mt-1">
+                <Link to="/forgot-password">Forgot Password?</Link>
+              </div>
+            )}
           </div>
 
           <button className="btn btn-primary w-100 mt-2">{isLogin ? 'Login' : 'Register'}</button>
