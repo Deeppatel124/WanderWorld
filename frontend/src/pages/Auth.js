@@ -1,63 +1,79 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsLogin(!isLogin);
-    setForm({ username: '', email: '', password: '' });
-    setMessage('');
-    setError('');
+    setForm({ username: "", email: "", password: "" });
+    setMessage("");
+    setError("");
   };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setMessage('');
-    setError('');
+    setMessage("");
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('');
-    setError('');
+    setMessage("");
+    setError("");
 
     try {
       if (isLogin) {
-        const res = await axios.post('https://wanderworld-production-4b52.up.railway.app/api/auth/login', {
-          email: form.email,
-          password: form.password,
-        });
+        const res = await axios.post(
+          "https://wanderworld-production-4b52.up.railway.app/api/auth/login",
+          {
+            email: form.email,
+            password: form.password,
+          }
+        );
 
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-        navigate('/');
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        navigate("/");
       } else {
-        const res = await axios.post('https://wanderworld-production-4b52.up.railway.app/api/auth/register', {
-          username: form.username,
-          email: form.email,
-          password: form.password,
-        });
+        const res = await axios.post(
+          "https://wanderworld-production-4b52.up.railway.app/api/auth/register",
+          {
+            username: form.username,
+            email: form.email,
+            password: form.password,
+          }
+        );
 
-        setMessage(res.data.message || 'Registered successfully. Please login.');
+        setMessage(
+          res.data.message || "Registered successfully. Please login."
+        );
         setIsLogin(true);
-        setForm({ username: '', email: '', password: '' });
+        setForm({ username: "", email: "", password: "" });
       }
     } catch (err) {
-      const msg = err.response?.data?.message || 'Something went wrong';
+      const msg = err.response?.data?.message || "Something went wrong";
       setError(msg);
     }
   };
 
   return (
-    <div className="bg-light d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
-      <div className="card p-4 shadow" style={{ width: '100%', maxWidth: '420px' }}>
-        <h2 className="text-center mb-3 text-primary">{isLogin ? 'Login' : 'Register'}</h2>
+    <div
+      className="bg-light d-flex justify-content-center align-items-center"
+      style={{ minHeight: "80vh" }}
+    >
+      <div
+        className="card p-4 shadow"
+        style={{ width: "100%", maxWidth: "420px" }}
+      >
+        <h2 className="text-center mb-3 text-primary">
+          {isLogin ? "Login" : "Register"}
+        </h2>
 
         {error && <div className="alert alert-danger">{error}</div>}
         {message && <div className="alert alert-success">{message}</div>}
@@ -109,20 +125,22 @@ const Auth = () => {
             )}
           </div>
 
-          <button className="btn btn-primary w-100 mt-2">{isLogin ? 'Login' : 'Register'}</button>
+          <button className="btn btn-primary w-100 mt-2">
+            {isLogin ? "Login" : "Register"}
+          </button>
         </form>
 
         <div className="text-center mt-3">
           {isLogin ? (
             <span>
-              Don't have an account?{' '}
+              Don't have an account?{" "}
               <button className="btn btn-link p-0" onClick={handleToggle}>
                 Register
               </button>
             </span>
           ) : (
             <span>
-              Already have an account?{' '}
+              Already have an account?{" "}
               <button className="btn btn-link p-0" onClick={handleToggle}>
                 Login
               </button>

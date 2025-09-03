@@ -35,7 +35,9 @@ const BlogCard = ({ blog }) => {
           className="text-decoration-none"
           style={{ fontWeight: '500', fontSize: '1rem', color: '#343a40' }}
         >
-          By {blog.user?.username || 'User'}
+          <img
+            src={`https://wanderworld-production-4b52.up.railway.app/public/images/userImage.png`} alt='User' style={{ height: '50px', width:'50px' }}
+          />By {blog.user?.username || 'User'}
         </Link>
         <Link
           to={`/blog/${blog._id}`}

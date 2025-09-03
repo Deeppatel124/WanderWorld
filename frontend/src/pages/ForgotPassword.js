@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('');
-    setError('');
+    setMessage("");
+    setError("");
 
     try {
-      const res = await axios.post('https://wanderworld-production-4b52.up.railway.app/api/auth/forgot-password', { email });
+      const res = await axios.post(
+        "https://wanderworld-production-4b52.up.railway.app/api/auth/forgot-password",
+        { email }
+      );
       setMessage(res.data.message);
-      setTimeout(() => navigate('/'), 3000); // Redirect after 3 seconds
+      setTimeout(() => navigate("/"), 3000); // Redirect after 3 seconds
     } catch (err) {
-      setError(err.response?.data?.message || 'Something went wrong');
+      setError(err.response?.data?.message || "Something went wrong");
     }
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
-      <div className="card p-4 shadow" style={{ width: '100%', maxWidth: '420px' }}>
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{ minHeight: "80vh" }}
+    >
+      <div
+        className="card p-4 shadow"
+        style={{ width: "100%", maxWidth: "420px" }}
+      >
         <h2 className="text-center mb-3 text-primary">Forgot Password</h2>
 
         {error && <div className="alert alert-danger">{error}</div>}
