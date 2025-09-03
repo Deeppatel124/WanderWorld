@@ -70,6 +70,14 @@ const BlogDetails = () => {
 
           <p className="text-muted mb-2">
             By{" "}
+            <img
+              src={`https://wanderworld-production-4b52.up.railway.app/images`}
+              alt="blog"
+              style={{
+                maxHeight: "50px",
+                width:'50px',
+              }}
+            />
             <Link
               to={`/profile/${blog.user?._id}`}
               className="text-decoration-none fw-semibold"

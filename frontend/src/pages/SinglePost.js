@@ -52,7 +52,15 @@ const SinglePost = () => {
           )}
           <h2 className="fw-bold text-dark">{post.title}</h2>
           <p className="text-muted mb-1">
-            zBy{' '}
+            By{' '}
+            <img
+              src={`https://wanderworld-production-4b52.up.railway.app/images`}
+              alt="blog"
+              style={{
+                maxHeight: "50px",
+                width:'50px',
+              }}
+            />
             <Link
               to={`/profile/${post.user?._id}`}
               className="text-decoration-none fw-semibold"
