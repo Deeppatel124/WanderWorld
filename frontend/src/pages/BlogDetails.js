@@ -71,8 +71,8 @@ const BlogDetails = () => {
           <p className="text-muted mb-2">
             By{" "}
             <img
-              src={`https://wanderworld-production-4b52.up.railway.app/images`}
-              alt="blog"
+              src={`https://wanderworld-production-4b52.up.railway.app/uploads/photo-2.jpg`}
+              alt="user"
               style={{
                 maxHeight: "50px",
                 width:'50px',
