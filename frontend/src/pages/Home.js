@@ -9,7 +9,7 @@ const Home = ({ searchQuery }) => {
   const fetchAllBlogs = async () => {
     try {
       const res = await axios.get(
-        "https://wanderworld-production-4b52.up.railway.app/api/blogs"
+        "http://localhost:5000/api/blogs"
       );
       setBlogs(res.data);
     } catch (err) {

@@ -34,7 +34,10 @@ const App = () => {
           path="/edit/:id"
           element={token ? <EditPost /> : <Navigate to="/auth" replace />}
         />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={token ? <Profile /> : <Navigate to="/auth" replace />}
+        />
         <Route path="/user/:id" element={<UserProfile />} />
         <Route path="/post/:id" element={<SinglePost />} />
         <Route path="/blog/:id" element={<BlogDetails />} />

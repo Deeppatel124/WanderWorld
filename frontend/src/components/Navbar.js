@@ -45,7 +45,7 @@ const Navbar = ({ onSearch }) => {
               <Link className="btn btn-outline-success btn-sm" to="/create">
                 Create
               </Link>
-              <Link className="btn btn-outline-primary btn-sm" to={`/profile/${user?._id}`}>
+              <Link className="btn btn-outline-primary btn-sm" to="/profile">
                 My Profile
               </Link>
               <button className="btn btn-danger btn-sm" onClick={handleLogout}>

@@ -15,7 +15,7 @@ const EditPost = () => {
     const fetchPost = async () => {
       try {
         const res = await axios.get(
-          `https://wanderworld-production-4b52.up.railway.app/api/blogs/${id}`
+          `http://localhost:5000/api/blogs/${id}`
         );
         setFormData({
           title: res.data.title,
@@ -39,7 +39,7 @@ const EditPost = () => {
 
     try {
       await axios.put(
-        `https://wanderworld-production-4b52.up.railway.app/api/blogs/${id}`,
+        `http://localhost:5000/api/blogs/${id}`,
         data,
         {
           headers: {

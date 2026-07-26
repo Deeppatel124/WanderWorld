@@ -20,7 +20,7 @@ const CreatePost = () => {
 
     try {
       await axios.post(
-        "https://wanderworld-production-4b52.up.railway.app/api/blogs",
+        "http://localhost:5000/api/blogs",
         data,
         {
           headers: {

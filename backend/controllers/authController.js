@@ -88,7 +88,7 @@ const forgotPassword = async (req, res) => {
       to: user.email,
       subject: "Password Reset Request",
       text: `You requested a password reset. Click the link to reset your password:\n\n
-      https://wanderworld-deep-patels-projects-ca1a81db.vercel.app/reset-password/${token}\n\n
+      http://localhost:3000/reset-password/${token}\n\n
       This link will expire in 1 hour.`,
     };
 

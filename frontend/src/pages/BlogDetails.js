@@ -12,7 +12,7 @@ const BlogDetails = () => {
     const fetchBlog = async () => {
       try {
         const res = await axios.get(
-          `https://wanderworld-production-4b52.up.railway.app/api/blogs/${id}`
+          `http://localhost:5000/api/blogs/${id}`
         );
         setBlog(res.data);
       } catch (err) {
@@ -55,7 +55,7 @@ const BlogDetails = () => {
         >
           {blog.image && (
             <img
-              src={`https://wanderworld-production-4b52.up.railway.app/uploads/${blog.image}`}
+              src={`http://localhost:5000/uploads/${blog.image}`}
               alt="blog"
               className="card-img-top mb-4"
               style={{
@@ -71,16 +71,22 @@ const BlogDetails = () => {
           <p className="text-muted mb-2">
             By{" "}
             <img
-              src={`https://wanderworld-production-4b52.up.railway.app/uploads/profileAvatar.jpg`}
+              src={
+                blog.user?.profileImage
+                ?`http://localhost:5000/uploads/${blog.user.profileImage}`
+                : "http://localhost:5000/uploads/profileAvatar.jpg"
+              }
               alt="user"
               style={{
-                maxHeight: "30px",
-                width:'30px',
+                width: "30px",
+                height: "30px",
+                borderRadius: "50%",
                 display:'inline',
+                marginRight: "8px",
               }}
             />
             <Link
-              to={`/profile/${blog.user?._id}`}
+              to={`/user/${blog.user?._id}`}
               className="text-decoration-none fw-semibold"
               style={{ color: "#0d6efd" }}
             >
@@ -96,7 +102,6 @@ const BlogDetails = () => {
             {blog.description}
           </p>
 
-          <h3>Comments</h3>
         </div>
       </div>
     </div>

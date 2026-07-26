@@ -25,7 +25,7 @@ router.post('/', authMiddleware, uploadMiddleware.single('image'), async (req, r
 // ✅ Get all blogs (for Home page)
 router.get('/', async (req, res) => {
   try {
-    const blogs = await Blog.find().populate('user', 'username');
+    const blogs = await Blog.find().populate('user', 'username profileImage');
     res.json(blogs);
   } catch (err) {
     console.error('Error fetching blogs:', err);
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 // ✅ Get blogs by user ID (for Profile page)
 router.get('/user/:id', async (req, res) => {
   try {
-    const blogs = await Blog.find({ user: req.params.id }).populate('user', 'username');
+    const blogs = await Blog.find({ user: req.params.id }).populate('user', 'username profileImage');
     res.json(blogs);
   } catch (err) {
     console.error('Error fetching user blogs:', err);
@@ -47,7 +47,7 @@ router.get('/user/:id', async (req, res) => {
 // ✅ Get a single blog by ID (for Read More)
 router.get('/:id', async (req, res) => {
   try {
-    const blog = await Blog.findById(req.params.id).populate('user', 'username');
+    const blog = await Blog.findById(req.params.id).populate('user', 'username profileImage');
     if (!blog) return res.status(404).json({ message: 'Blog not found' });
     res.json(blog);
   } catch (err) {

@@ -16,7 +16,7 @@ function ResetPassword() {
 
     try {
       const res = await axios.post(
-        `https://wanderworld-production-4b52.up.railway.app/api/auth/reset-password/${token}`,
+        `http://localhost:5000/api/auth/reset-password/${token}`,
         { newPassword }
       );
       setMessage(res.data.message);

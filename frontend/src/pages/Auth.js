@@ -30,7 +30,7 @@ const Auth = () => {
     try {
       if (isLogin) {
         const res = await axios.post(
-          "https://wanderworld-production-4b52.up.railway.app/api/auth/login",
+          "http://localhost:5000/api/auth/login",
           {
             email: form.email,
             password: form.password,
@@ -42,7 +42,7 @@ const Auth = () => {
         navigate("/");
       } else {
         const res = await axios.post(
-          "https://wanderworld-production-4b52.up.railway.app/api/auth/register",
+          "http://localhost:5000/api/auth/register",
           {
             username: form.username,
             email: form.email,
